@@ -1,14 +1,75 @@
 language: node_js
-dist: trusty
-sudo: required
-node_js: stable
-install:
-  - curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz
-  - tar -zxvf mongodb-linux-x86_64-3.0.6.tgz
-  - mkdir -p $HOME/bin/mongodb
-  - cp -R -n mongodb-linux-x86_64-3.0.6/* $HOME/bin/mongodb
-  - export PATH=$HOME/bin/mongodb/bin:$PATH
-  - mongod --version
-  - java -version
-  - npm install -g bower
-  - npm install
+node_js:
+    - "12"
+cache: yarn
+
+# https://docs.travis-ci.com/user/multi-os/
+os:
+    - linux
+    - osx
+    # - windows
+    # be carefull - secrets are not protected..!!!
+    # https://travis-ci.community/t/current-known-issues-please-read-this-before-posting-a-new-topic/264/22
+
+dist: xenial
+
+env: YARN_GPG=yes
+# https://stackoverflow.com/a/33758552/574981
+
+matrix:
+    include:
+        - os: windows
+          env: YARN_GPG=no
+          # this fixes the windows builds..
+          # https://travis-ci.community/t/build-doesnt-finish-after-completing-tests/
+
+# jobs:
+#     allow_failures:
+#         - os: windows
+
+addons:
+    apt:
+        packages:
+            # needed for node-hid
+            # https://www.npmjs.com/package/node-hid#compiling-from-source
+            # https://github.com/node-hid/node-hid/pull/253
+            - libusb-1.0-0
+            - libusb-1.0-0-dev
+            - libudev-dev
+    # homebrew:
+    #     packages: packagename
+    # choco:
+    #     packages: python2
+
+# before_install:
+#     # - if [ $TRAVIS_OS_NAME = windows ]; then export YARN_GPG=no; fi
+#     # ^ this is to late in the lifecylce.. YARN already run..
+#     # - if [ $TRAVIS_OS_NAME = windows ]; then npm install --global windows-build-tools; fi
+#     # ^ this does not work.. endless loop...
+#     - echo $YARN_GPG
+
+# build without upload
+# after_success:
+    # - yarn build
+
+# build and upload
+# this is all we need to trigger the upload...
+# $GH_TOKEN has to be available...
+after_success:
+    - yarn release
+
+# deploy:
+#     skip_cleanup: true
+#     provider: releases
+#     api_key: $GH_TOKEN
+#     # file: "FILE TO UPLOAD"
+#     draft: true
+#     on:
+#         tags: true
+# deploy:
+#     skip_cleanup: true
+#     provider: script
+#     script: yarn release
+
+after_script:
+    - if [ $TRAVIS_OS_NAME = windows ]; then ps -ef; fi
