@@ -1,4 +1,4 @@
-# Crowd Control (hackerearth-hackathon2021)
+# Solitude (hackerearth-hackathon2021)
 
 To control the crowd from entering the location's capacity and track
 
