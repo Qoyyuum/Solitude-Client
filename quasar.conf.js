@@ -116,8 +116,8 @@ cfg.module.rules.push({
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Crowd Control`,
-        short_name: `Crowd Control`,
+        name: `Solitude`,
+        short_name: `Solitude`,
         description: `To control the crowd from entering the location's capacity and track`,
         display: 'standalone',
         orientation: 'portrait',

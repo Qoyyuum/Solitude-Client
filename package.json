@@ -2,7 +2,7 @@
   "name": "hackerearth-hackathon2021",
   "version": "0.0.1",
   "description": "To control the crowd from entering the location's capacity and track",
-  "productName": "Crowd Control",
+  "productName": "Solitude",
   "author": "Abdul Qoyyuum <abdul.qoyyuum@gmail.com>",
   "private": true,
   "scripts": {
