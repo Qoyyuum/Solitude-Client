@@ -18,5 +18,29 @@
   <body>
     <!-- DO NOT touch the following DIV -->
     <div id="q-app"></div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCOAc6Bd0HXjDyaBmB4Lc6HRAIuB0I-aU8",
+        authDomain: "solitude-c2da9.firebaseapp.com",
+        projectId: "solitude-c2da9",
+        storageBucket: "solitude-c2da9.appspot.com",
+        messagingSenderId: "96010132994",
+        appId: "1:96010132994:web:6c50952f34468133ba911b",
+        measurementId: "G-F17RB696M6"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
