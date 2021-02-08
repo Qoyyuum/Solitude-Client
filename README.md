@@ -1,5 +1,7 @@
 # Solitude (hackerearth-hackathon2021)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fa58809a-d483-45b5-95fa-7a0c92156fb7/deploy-status)](https://app.netlify.com/sites/solitude-client/deploys)
+
 To control the crowd from entering the location's capacity and track
 
 ## Install the dependencies

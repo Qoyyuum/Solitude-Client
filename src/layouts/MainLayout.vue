@@ -49,10 +49,16 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'View our source code on Github',
+    caption: 'github.com/Qoyyuum/Solitude-Client',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
+    link: 'https://github.com/Qoyyuum/Solitude-Client'
+  },
+  {
+    title: 'About this app',
+    caption: 'Made in part of the Hackathon 2021 on HackerEarth',
+    icon: 'public',
+    link: 'https://hack2021.hackerearth.com/'
   }
 ];
 
@@ -61,7 +67,7 @@ export default {
   components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: false,
+      leftDrawerOpen: true,
       essentialLinks: linksData
     }
   }
