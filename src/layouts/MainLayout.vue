@@ -58,7 +58,7 @@ const linksData = [
     title: 'About this app',
     caption: 'Made in part of the Hackathon 2021 on HackerEarth',
     icon: 'public',
-    link: 'https://github.com/Qoyyuum/Solitude-Client'
+    link: 'https://hack2021.hackerearth.com/'
   }
 ];
 
