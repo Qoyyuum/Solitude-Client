@@ -25,8 +25,14 @@
         <q-btn
           label="Submit"
           type="submit"
+          :loading="submitting"
           color="primary"
-          to="/dashboard" />
+          to="/dashboard"
+        >
+          <template v-slot:loading>
+            <q-spinner-facebook />
+          </template>
+        </q-btn>
         <q-btn
           label="Reset"
           type="reset"
@@ -45,7 +51,7 @@ export default {
     return {
       username: null,
       password: null,
-
+      submitting: false,
       accept: false
     }
   },
@@ -61,6 +67,7 @@ export default {
         })
       }
       else {
+        this.submitting = true
         this.$q.notify({
           color: 'green-4',
           textColor: 'white',
