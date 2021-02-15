@@ -305,7 +305,8 @@
       >
         <template #day="{ timestamp }">
           <template v-if="calendarView.indexOf('agenda') < 0">
-            <template v-for="(event, index) in getEvents(timestamp.date)">
+            <template v-for="(index) in getEvents(timestamp.date)">
+            <!-- <template v-for="(event, index) in getEvents(timestamp.date)"> -->
               <q-badge
                 :key="index"
                 style="width: 100%; cursor: pointer; height: 14px; max-height: 14px"
@@ -334,7 +335,8 @@
             v-if="calendarView.indexOf('agenda') < 0"
             class="row justify-center"
           >
-            <template v-for="(event, index) in eventsMap[timestamp.date]">
+            <template v-for="(index) in eventsMap[timestamp.date]">
+            <!-- <template v-for="(event, index) in eventsMap[timestamp.date]"> -->
               <q-badge
                 v-if="!event.time"
                 :key="index"
@@ -369,7 +371,8 @@
 
         <template #day-body="{ timestamp, timeStartPos, timeDurationHeight }">
           <template v-if="calendarView.indexOf('agenda') < 0">
-            <template v-for="(event, index) in getEvents(timestamp.date)">
+            <template v-for="(index) in getEvents(timestamp.date)">
+            <!-- <template v-for="(event, index) in getEvents(timestamp.date)"> -->
               <q-badge
                 v-if="event.time"
                 :key="index"
@@ -395,15 +398,15 @@
             </template>
           </template>
           <template v-else>
-            <template v-for="agenda in getAgenda(timestamp)">
+            <template v-for="a in getAgenda(timestamp)">
               <div
-                :key="timestamp.date + agenda.time"
-                :label="agenda.time"
+                :key="timestamp.date + a.time"
+                :label="a.time"
                 class="justify-start q-ma-sm shadow-5 bg-grey-6"
                 style="overflow: hidden;"
               >
                 <div
-                  v-if="agenda.avatar"
+                  v-if="a.avatar"
                   class="row justify-center"
                   style="margin-top: 30px; width: 100%;"
                 >
@@ -411,20 +414,20 @@
                     style="margin-top: -25px; margin-bottom: 10px; font-size: 60px; max-height: 50px;"
                   >
                     <img
-                      :src="agenda.avatar"
+                      :src="a.avatar"
                       style="border: #9e9e9e solid 5px;"
                     />
                   </q-avatar>
                 </div>
                 <div class="col-12 q-px-sm">
-                  <strong>{{ agenda.time }}</strong>
+                  <strong>{{ a.time }}</strong>
                 </div>
                 <div
-                  v-if="agenda.desc"
+                  v-if="a.desc"
                   class="col-12 q-px-sm"
                   style="font-size: 10px;"
                 >
-                  {{ agenda.desc }}
+                  {{ a.desc }}
                 </div>
               </div>
             </template>
@@ -474,7 +477,8 @@ const formDefault = {
   dateTimeStart: "",
   dateTimeEnd: "",
   icon: "",
-  bgcolor: "#0000FF"
+  bgcolor: "#0000FF",
+  location: ""
 };
 
 // function leftClick (e) {
@@ -483,6 +487,9 @@ const formDefault = {
 
 export default {
   name: "Dashboard",
+
+  meta: { title: 'Solitude - Book a time and place slot app' },
+
 
   data() {
     return {
@@ -493,6 +500,7 @@ export default {
       addEvent: false,
       contextDay: null,
       eventForm: { ...formDefault },
+      showLocationPicker: '',
       displayEvent: true,
       event: null,
       events: [],
