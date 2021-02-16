@@ -1,87 +1,48 @@
 <template>
-  <div class="q-pa-md" style="max-width: 400px">
-    <h3>Login</h3>
-    <q-form
-      @submit="onSubmit"
-      @reset="onReset"
-      class="q-gutter-md"
+  <div class="q-pa-lg">
+    <q-tabs
+      v-model="tab"
+      dense
+      class="text-grey"
+      active-color="primary"
+      indicator-color="primary"
+      align="justify"
+      narrow-indicator
     >
-      <q-input
-        standout="bg-teal text-white"
-        v-model="username"
-        type="text"
-        label="Username"
-        autofocus />
+          <q-tab name="login" label="Login" />
+          <q-tab name="register" label="Register" />
+        </q-tabs>
 
-      <q-input
-        standout="bg-teal text-white"
-        v-model="password"
-        type="password"
-        label="Password" />
+    <q-tab-panels v-model="tab" animated>
+      <q-tab-panel name="login">
+        <login-register :tab="tab" />
+      </q-tab-panel>
+      <q-tab-panel name="register">
+        <login-register :tab="tab" />
+      </q-tab-panel>
 
-      <q-toggle v-model="accept" label="I accept the license and terms" />
-
-      <div>
-        <q-btn
-          label="Submit"
-          type="submit"
-          :loading="submitting"
-          color="primary"
-          to="/dashboard"
-        >
-          <template v-slot:loading>
-            <q-spinner-facebook />
-          </template>
-        </q-btn>
-        <q-btn
-          label="Reset"
-          type="reset"
-          color="primary"
-          flat
-          class="q-ml-sm" />
-      </div>
-    </q-form>
+    </q-tab-panels>
   </div>
 </template>
 
 <script>
+import LoginRegister from "src/components/LoginRegister.vue"
+
+
+
 export default {
   name: 'Login',
-  data () {
-    return {
-      username: null,
-      password: null,
-      submitting: false,
-      accept: false
-    }
+
+  meta: {
+    title: 'Solitude - Book a time and place slot app'
   },
 
-  methods: {
-    onSubmit () {
-      if (this.accept !== true) {
-        this.$q.notify({
-          color: 'red-5',
-          textColor: 'white',
-          icon: 'warning',
-          message: 'You need to accept the license and terms first'
-        })
-      }
-      else {
-        this.submitting = true
-        this.$q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Submitted'
-        })
-      }
-    },
-
-    onReset () {
-      this.name = null
-      this.age = null
-      this.accept = false
+  data () {
+    return {
+      tab: 'login'
     }
-  }
+  },
+  components: { LoginRegister }
+
 }
 </script>

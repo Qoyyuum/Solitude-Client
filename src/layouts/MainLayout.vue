@@ -2,14 +2,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+        /> -->
 
         <q-toolbar-title>
           Solitude
@@ -18,7 +18,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       show-if-above
       bordered
       content-class="bg-grey-1"
@@ -36,7 +36,7 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view />
@@ -45,30 +45,30 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+// import EssentialLink from 'components/EssentialLink.vue'
 
-const linksData = [
-  {
-    title: 'View our source code on Github',
-    caption: 'github.com/Qoyyuum/Solitude-Client',
-    icon: 'code',
-    link: 'https://github.com/Qoyyuum/Solitude-Client'
-  },
-  {
-    title: 'About this app',
-    caption: 'Made in part of the Hackathon 2021 on HackerEarth',
-    icon: 'public',
-    link: 'https://hack2021.hackerearth.com/'
-  }
-];
+// const linksData = [
+//   {
+//     title: 'View our source code on Github',
+//     caption: 'github.com/Qoyyuum/Solitude-Client',
+//     icon: 'code',
+//     link: 'https://github.com/Qoyyuum/Solitude-Client'
+//   },
+//   {
+//     title: 'About this app',
+//     caption: 'Made in part of the Hackathon 2021 on HackerEarth',
+//     icon: 'public',
+//     link: 'https://hack2021.hackerearth.com/'
+//   }
+// ];
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  // components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: true,
-      essentialLinks: linksData
+      leftDrawerOpen: false,
+      // essentialLinks: linksData
     }
   }
 }
