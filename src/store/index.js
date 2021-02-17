@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import example from './module-example'
+import calendar from './calendar'
+import common from './common'
+import auth from './auth'
 
 Vue.use(Vuex)
 
@@ -17,7 +20,9 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      auth,
+      calendar,
+      common,
     },
 
     // enable strict mode (adds overhead!)
